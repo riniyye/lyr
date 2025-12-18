@@ -28,10 +28,14 @@
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
 
   function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
+  // 🔥 PC에서는 실행 안 되게 차단
+  if (window.innerWidth >= 1200) return;
+
+  document.body.classList.toggle('mobile-nav-active');
+  mobileNavToggleBtn.classList.toggle('bi-list');
+  mobileNavToggleBtn.classList.toggle('bi-x');
+}
+
   mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
   /**
@@ -202,3 +206,23 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 1200) {
+    document.body.classList.remove("mobile-nav-active");
+
+    const toggleBtn = document.querySelector(".mobile-nav-toggle");
+    if (toggleBtn) {
+      toggleBtn.classList.remove("bi-x");
+      toggleBtn.classList.add("bi-list");
+    }
+  }
+});

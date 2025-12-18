@@ -11,11 +11,76 @@
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
 /* Fonts */
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
 
 
+/* 로고(LYR)에 Rock Salt 폰트를 강제로 적용 */
+.header .logo h1.sitename,
 .kim-font {
-  font-family: "Rock Salt", cursive;
+  font-family: "Rock Salt", cursive !important;
   font-weight: 300;
   font-style: normal;
 }
@@ -27,10 +92,11 @@
 
 
 :root {
-  --default-font: "Noto Sans KR", sans-serif;
-  --heading-font: "Noto Sans KR", sans-serif;
-  --nav-font: "Noto Sans KR", sans-serif;
+  --default-font: 'Paperozi', sans-serif;
+  --heading-font: 'Paperozi', sans-serif;
+  --nav-font: 'Paperozi', sans-serif;
 }
+
 
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -80,7 +146,7 @@
 body {
   color: var(--default-color);
   background-color: var(--background-color);
-  font-family: var(--default-font);
+  font-family: 'Paperozi', sans-serif !important;
 }
 
 a {
@@ -161,6 +227,7 @@ h6 {
 --------------------------------------------------------------*/
 .header {
   --background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(6px);
   --default-color: #ffffff;
   --heading-color: #ffffff;
   color: var(--default-color);
@@ -168,6 +235,10 @@ h6 {
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
 }
 
 .header .logo {
@@ -206,6 +277,8 @@ h6 {
 .header .header-social-links a i {
   line-height: 0px;
 }
+
+
 
 @media (min-width: 1200px) {
   #navmenu {
@@ -260,7 +333,7 @@ h6 {
 
   .navmenu a,
   .navmenu a:focus {
-    color: var(--nav-color);
+    color: #ffffff !important;
     padding: 18px 15px;
     font-size: 13px;
     text-transform: uppercase;
@@ -464,6 +537,7 @@ h6 {
 
   .mobile-nav-active .navmenu {
     position: fixed;
+    z-index: 10001;
     overflow: hidden;
     inset: 0;
     background: rgba(33, 37, 41, 0.8);
@@ -739,10 +813,10 @@ section,
   line-height: 1;
 }
 
-.section-title h2,
-.section-title span {
-  font-family: 'Poppins', sans-serif; /* 원하는 폰트로 통일 */
+h1, h2, h3 {
+  font-family: var(--heading-font); /* Paperozi */
 }
+
 
 .section-title p {
   margin-bottom: 0;
@@ -772,14 +846,15 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  background: color-mix(in srgb, var(--background-color), transparent 70%);
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
 }
 
 .hero img {
@@ -789,12 +864,16 @@ section,
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1;
+  z-index: 0;
 }
 
 .hero .container {
   position: relative;
-  z-index: 3;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero h2 {
@@ -811,17 +890,7 @@ section,
   line-height: 56px;
 
   /* ✅ span과 같은 폰트로 통일 */
-  font-family: 'Poppins', sans-serif;
   letter-spacing: 2px; /* (선택) 자간 맞추기 */
-}
-
-.hero h2 {
-  margin: 0;
-  font-size: 100px;
-  font-weight: 700;
-  line-height: 56px;
-  font-family: 'Poppins', sans-serif;
-
   /* ✅ 여백 추가 (문단 띄우기) */
   margin-bottom: 50px; /* 숫자는 자유롭게 조정 가능 */
 }
@@ -833,8 +902,6 @@ section,
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 1px;
-  /* ✅ span / h2와 동일한 폰트로 통일 */
-  font-family: 'Poppins', sans-serif;
 }
 
 .hero p .highlight {
@@ -853,8 +920,11 @@ section,
 .hero .btn-scroll {
   transition: 0.4s;
   color: color-mix(in srgb, var(--default-color), transparent 60%);
-  display: block;
-  margin-top: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  z-index: 4;
   animation: btn-up-down 1s ease-in-out infinite alternate-reverse both;
 }
 
@@ -926,7 +996,7 @@ section,
   제목 (라이센스 / 수상 / 경력)
 *************************************************/
 .resume .resume-title {
-  font-family: 'Pretendard', 'Noto Sans KR', sans-serif !important;
+  font-family: 'Paperozi', sans-serif !important;
   color: var(--heading-color);
   font-size: 26px;
   font-weight: 700;
@@ -934,9 +1004,8 @@ section,
   margin-bottom: 20px;
   line-height: 1.3;
   letter-spacing: -0.2px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
+
 
 
 /************************************************
@@ -955,6 +1024,12 @@ section,
   padding-bottom: 0;
   margin-bottom: 0;
 }
+
+.resume .resume-item p em {
+  color: #ff276b;
+  font-weight: 500;   /* 선택: 살짝 강조 */
+}
+
 
 
 /************************************************
@@ -1366,6 +1441,12 @@ section,
   transform: scale(1.1);
 }
 
+.portfolio-info {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
 /*--------------------------------------------------------------
 # Pricing Section
 --------------------------------------------------------------*/
@@ -1659,6 +1740,63 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
+.portfolio-details-slider .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-details-slider .swiper-slide img {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.cardnews-img {
+  max-width: 700px; /* 원하는 크기로 조절 */
+  margin: 0 auto;
+  display: block;
+}
+
+.video-box iframe {
+  border-radius: 12px;  /* 모서리 12px 둥글게 */
+  overflow: hidden;
+}
+.portfolio-details-slider .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 전체 섹션 컨텐츠 최대 너비 제한 */
+.portfolio-extra-image {
+  max-width: 900px;
+  margin: 50px auto; /* 위아래 여백 + 가운뎃정렬 */
+}
+
+/* 모든 이미지 통일된 크기 */
+.portfolio-extra-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* 유튜브 영상 박스 사이즈 제한 */
+.video-box {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 유튜브 iframe 둥근 모서리 */
+.video-box iframe {
+  border-radius: 12px;
+}
+
+
+
+
 /*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
@@ -1731,3 +1869,317 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 기본 얇은 문장 */
+.hero-text {
+  font-family: 'Paperozi', sans-serif !important;
+  text-align: center;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 1.6;
+  color: #ffffff;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-text {
+  opacity: 0;
+  transform: translateY(36px); /* 🔥 더 아래에서 시작 */
+  transition: opacity 1.1s ease, transform 1.1s ease; /* 🔥 더 천천히 */
+}
+
+.hero-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* 기본 문장 */
+.hero-text .hero-line {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.hero-text .hero-bold {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.hero-text .hero-light {
+  font-size: 1em;
+  font-weight: 300;
+  margin-left: 6px;
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+  .hero-text .hero-line {
+    font-size: 22px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 480px) {
+  .hero-text .hero-line {
+    font-size: 16px;
+  }
+}
+
+
+.underline-animate {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-animate::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 5px;          /* ✅ 텍스트 바로 아래 */
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* hero 등장 후 실행 */
+.hero-text.show .underline-animate::after {
+  animation: underlineDraw 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.9s;
+}
+
+@keyframes underlineDraw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+
+
+
+@keyframes underlineDraw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+
+
+/* 🔽 아이콘 */
+.hero-arrow {
+  margin-top: 28px;          /* 텍스트와 간격 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  animation: btn-up-down 1s ease-in-out infinite alternate;
+}
+
+.hero-arrow i {
+  font-size: 48px;
+}
+
+
+
+.header .logo h1.sitename,
+.kim-font {
+  font-family: "Rock Salt", cursive !important;
+}
+
+/* 헤더 문구 전체 스타일 */
+.hero-heading {
+  font-family: 'Paperozi', sans-serif;
+  font-weight: 300;               /* 기본 얇은 텍스트 */
+  font-size: 32px;                /* 기본 크기 */
+  line-height: 1.6;               /* 행간 넉넉하게 */
+  letter-spacing: 1.2px;          /* 자간 증가 */
+  text-align: center;
+  color: #ffffff;
+  margin-top: 0px;
+  margin-bottom: 40px;            /* 아래 여백 */
+  display: inline-block;          /* 텍스트 블록 크기 안정 */
+}
+
+/* 두 번째 줄(특히 강조 부분) 더 선명하게 */
+.hero-heading span {
+  font-weight: 600;
+}
+
+/* 이름 강조 – 왼쪽 사진처럼 아주 강하게 */
+.name-strong {
+  font-weight: 800;
+  letter-spacing: 1px;            /* 강조 쪽은 자간 살짝 좁게 */
+}
+
+/* === Portfolio Thumbnail 16:9 강제 적용 === */
+.portfolio-content {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.portfolio-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.extra-caption {
+  text-align: center;        /* 🔥 텍스트 중앙 정렬 */
+  font-size: 18px;          /* 🔥 조금 더 크게 */
+  font-weight: 700;         /* 🔥 제목처럼 굵게 */
+  letter-spacing: 0.5px;    /* 가독성 조금 증가 */
+  margin-bottom: 12px;
+  margin-top: 20px;         /* 위 여백 추가 (선택) */
+  color: #555;
+}
+
+.extra-caption i {
+  color: #ff276b;
+  margin-right: 10px;
+  font-size: 20px;          /* 아이콘도 함께 키우기 */
+  
+}
+
+.portfolio-extra-image { text-align: center; } .shorts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; } .shorts-item { position: relative; display: block; border-radius: 12px; overflow: hidden; } .shorts-item img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; } /* hover 안내 */ .shorts-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); color: #fff; font-size: 14px; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; } .shorts-item:hover .shorts-overlay { opacity: 1; } .instagram-media { width: 100% !important; min-width: 100% !important; } @media (max-width: 768px) { .shorts-grid { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 480px) { .shorts-grid { grid-template-columns: 1fr; } }
+
+/* =====================================================
+   🔥 LAURA MOBILE MENU – ABSOLUTE FINAL FIX
+   ===================================================== */
+
+@media (max-width: 1199px) {
+
+  /* body 스크롤 차단 (기존 Laura 동작 유지) */
+  body.mobile-nav-active {
+    overflow: hidden;
+  }
+
+  /* header는 시각용 레이어 */
+  .header {
+    z-index: 10000;
+  }
+
+  /* 🔥 모바일 메뉴를 body 기준으로 완전 분리 */
+  body.mobile-nav-active nav.navmenu {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+
+    background: rgba(33, 37, 41, 0.85) !important;
+    z-index: 20000 !important;
+
+    padding-top: 80px; /* header 높이 */
+  }
+
+  /* 🔥 흰색 메뉴 박스 */
+  body.mobile-nav-active nav.navmenu > ul {
+    position: relative !important;
+    inset: unset !important;
+
+    margin: 0 16px !important;
+    padding: 12px 0 !important;
+
+    max-height: calc(100vh - 120px) !important;
+    overflow-y: auto !important;
+
+    background: #ffffff !important;
+    border-radius: 14px !important;
+  }
+
+  /* X 버튼 항상 최상단 */
+  .mobile-nav-toggle {
+    position: fixed !important;
+    top: 18px !important;
+    right: 16px !important;
+    z-index: 20001 !important;
+  }
+
+  /* hero는 무조건 아래 */
+  .hero,
+  .hero::before,
+  .hero img {
+    z-index: 1 !important;
+  }
+}
+
+/* ===============================
+   PC에서는 모바일 메뉴 차단
+   =============================== */
+@media (min-width: 1200px) {
+
+  body.mobile-nav-active {
+    overflow: auto !important;
+  }
+
+  body.mobile-nav-active #navmenu {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    z-index: auto !important;
+  }
+
+  body.mobile-nav-active #navmenu ul {
+    display: flex !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
+
+/* ======================================
+   PC DESKTOP NAV FIX (필수)
+   ====================================== */
+@media (min-width: 1200px) {
+
+  /* 데스크탑 메뉴 강제 복구 */
+  #navmenu ul {
+    display: flex !important;
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* 모바일 오버레이 완전 무력화 */
+  body.mobile-nav-active #navmenu {
+    position: static !important;
+    background: transparent !important;
+    inset: auto !important;
+  }
+
+  body.mobile-nav-active {
+    overflow: auto !important;
+  }
+}
+
